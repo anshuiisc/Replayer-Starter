@@ -15,11 +15,17 @@ java -jar target/iot-bm-storm-0.1-jar-with-dependencies.jar <L|C> <Topology Name
 ```
 where each option is as follows:
 > L|C - Stands for Local/Cluster. Use L when running the code on local system, and C when running on the cluster
+
 > Topology Name - Give a name to the topology. (The log file names will have the topology name added) 
-> /path/to/input/file - The path to the input file. The file content should be a CSV as described in 
+
+> /path/to/input/file - The path to the input file. The file content should be a CSV as described in
+
 > Log ID - Unique ID that is used to create the log files (log file name uses this). Ensure this is changed each time you run the code so that a separate log file is created
+
 > Scale factor - A floating point value that is the inverse of the speed up that you require. If you want 100X speedup, then set this value to (1/100) = 0.01. For 10X set this to 0.1.
+
 > /path/to/log/dir - Path to directory where logs need to be stored
+
 > dummy test - Leave these arguments as is.
 
 E.G:
