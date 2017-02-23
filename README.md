@@ -75,5 +75,5 @@ Since the topology code can run on any one of the nodes in the cluster, we need 
 
 E.G:
 ```
-/opt/storm/apache-storm-1.0.2/bin/storm jar target/iot-bm-storm-0.1-jar-with-dependencies.jar in.dream_lab.bm.stream_iot.storm.topo.apps.SampleTopology C IdentityTopology /scratch/newtestfile SENML-210 0.001 /scratch/topo-log dummy test
+/opt/storm/apache-storm-1.0.2/bin/storm jar target/iot-bm-storm-0.1-jar-with-dependencies.jar in.dream_lab.bm.stream_iot.storm.topo.apps.SampleTopology C IdentityTopology /scratch/newtestfile JSON-210 0.001 /scratch/topo-log dummy test
 ```
