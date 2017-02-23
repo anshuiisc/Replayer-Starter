@@ -18,7 +18,7 @@ where each option is as follows:
 
 > Topology Name - Give a name to the topology. (The log file names will have the topology name added) 
 
-> /path/to/input/file - The path to the input file. The file content should be a CSV as described in
+> /path/to/input/file - The path to the input file. The file content should be a CSV as described in [Format of Input File](#format-of-input-file)
 
 > Log ID - Unique ID that is used to create the log files (log file name uses this). Ensure this is changed each time you run the code so that a separate log file is created
 
@@ -32,5 +32,11 @@ E.G:
 ```
 java -jar target/iot-bm-storm-0.1-jar-with-dependencies.jar L IdentityTopology /home/dreamlab2/newtestfile JSON-210 0.001 /home/dreamlab2/Desktop/log dummy test
 ```
- 
+## Format of Input File
+The Input file to this code must be a CSV file with the following format:
+> Epoch Time, JSON Data
+where the lines are sorted by Epoch Time.
+
+A sample file is located at https://github.com/prajay/Replayer-Starter/blob/master/storm/SYS_sample_data_senml.csv
+
 ## Running code on the cluster
