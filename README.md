@@ -1,5 +1,5 @@
 # Replayer-Starter
-Starter code to replay data in a file as a stream
+Starter code to replay data in a file as a stream. This code can only stream data on a single file in the local filesystem. You will need to write your own code to replay data from multiple files in HDFS using a similar logic. This code also assumes that the data in the file is in sorted order, which may not be the case with the twitter data set.
 
 ## Running code Locally
 Install maven and git.
