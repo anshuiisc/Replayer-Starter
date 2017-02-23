@@ -36,13 +36,14 @@ java -jar target/iot-bm-storm-0.1-jar-with-dependencies.jar L IdentityTopology /
 ## Format of Input File
 The Input file to this code must be a CSV file with the following format:
 > Epoch Time, JSON Data
+
 where the lines are sorted by Epoch Time.
 
 A sample file is located [here](storm/SYS_sample_data_senml.csv)
 
 ## Running code on the cluster
 Clone the repository onto the cluster. 
-You need to make the following changes to [storm/pom.xml](storm/pom.xml) before building and running the jar on the cluser:
+You need to make the following changes to [storm/pom.xml](storm/pom.xml) before building and running the jar on the cluster:
 ```
 diff --git a/storm/pom.xml b/storm/pom.xml
 index 92373b0..105826a 100644
