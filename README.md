@@ -1,5 +1,6 @@
 # Replayer-Starter
-Starter code to replay data in a file as a stream. This code can only stream data on a single file in the local filesystem. You will need to write your own code to replay data from multiple files in HDFS using a similar logic. This code also assumes that the data in the file is in sorted order, which may not be the case with the twitter data set.
+Starter code to replay data in a file as a stream. This code can only stream data on a single file in the local filesystem. You will need to write your own code to replay data from multiple files in HDFS using a similar logic. This code also assumes that the data in the file is in sorted order, which may not be the case with the twitter data set. Also note that the code being provided here was originally used for streaming data as part of the "“RIoTBench: A Real-time IoT Benchmark for
+Distributed Stream Processing Platforms" experiments. Hence there may be issues such as the first line of a file getting truncated (since the code considers it to be a header line). The aim of this code is just to give an overview of how replaying can be done while you figure out how to do it for the twitter data set.
 
 ## Running code Locally
 Install maven and git.
