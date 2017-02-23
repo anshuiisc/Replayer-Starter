@@ -18,7 +18,7 @@ where each option is as follows:
 
 > Topology Name - Give a name to the topology. (The log file names will have the topology name added) 
 
-> /path/to/input/file - The path to the input file. The file content should be a CSV as described in [Format of Input File](#format-of-input-file)
+> /path/to/input/file - The path to the input file. The file content should be a CSV as described [here](#format-of-input-file)
 
 > Log ID - Unique ID that is used to create the log files (log file name uses this). Ensure this is changed each time you run the code so that a separate log file is created
 
@@ -37,6 +37,43 @@ The Input file to this code must be a CSV file with the following format:
 > Epoch Time, JSON Data
 where the lines are sorted by Epoch Time.
 
-A sample file is located at https://github.com/prajay/Replayer-Starter/blob/master/storm/SYS_sample_data_senml.csv
+A sample file is located [here](storm/SYS_sample_data_senml.csv)
 
 ## Running code on the cluster
+Clone the repository onto the cluster. 
+You need to make the following changes to [storm/pom.xml](storm/pom.xml) before building and running the jar on the cluser:
+```
+diff --git a/storm/pom.xml b/storm/pom.xml
+index 92373b0..105826a 100644
+--- a/storm/pom.xml
++++ b/storm/pom.xml
+@@ -33,7 +33,7 @@
+                                </descriptorRefs>
+                                <archive>
+                                <manifest>
+-                               <mainClass>in.dream_lab.bm.stream_iot.storm.topo.apps.SampleTopology</mainClass>
++                               <mainClass></mainClass>
+                                </manifest>
+                                </archive>
+                                </configuration>
+@@ -55,7 +55,7 @@
+                        <groupId>org.apache.storm</groupId>
+                        <artifactId>storm-core</artifactId>
+                        <version>1.0.1</version>
+-                       <!--<scope>provided</scope>-->
++                       <scope>provided</scope>
+                </dependency>
+                <dependency>
+                        <groupId>joda-time</groupId>
+```
+Then run the following while inside the `storm` directory:
+```
+mvn clean compile package
+```
+
+Since the topology code can run on any one of the nodes in the cluster, we need to ensure that the sample input file and the log directory is a location that can be accessed from any of the nodes. **Hence please ensure that you place the input file in /scratch on the turing head node and set log location to /scratch/topo-log**. Also ensure that you pass the first argument as **C and not L**. 
+
+E.G:
+```
+/opt/storm/apache-storm-1.0.2/bin/storm jar target/iot-bm-storm-0.1-jar-with-dependencies.jar in.dream_lab.bm.stream_iot.storm.topo.apps.SampleTopology C IdentityTopology /scratch/newtestfile SENML-210 0.001 /scratch/topo-log dummy test
+```
